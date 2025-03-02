@@ -1,2 +1,0 @@
-# mavenArchetype
-jetbrains IDEA创建maven archetype项目配置tomcat9与mysql实现简易web应用程序服务器部署
