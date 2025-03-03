@@ -32,10 +32,11 @@
     </dependency>
 
     <!-- lombok 自动生成getter,setter,toString() -->
+    <!-- lombok要更新,最好要最新的 不然容易报错 -->
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.24</version>
+      <version>1.18.30</version>
       <scope>provided</scope>
     </dependency>
 
