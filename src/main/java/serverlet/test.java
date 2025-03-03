@@ -1,7 +1,20 @@
 package serverlet;
 
-public class test {
-    public static void main(String[] args) {
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
+
+@WebServlet("/ccc")
+public class test extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("doGet");
+        request.getRequestDispatcher("pages/welcome/welcome.html").forward(request,response);
     }
+
 }

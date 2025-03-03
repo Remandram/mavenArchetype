@@ -5,17 +5,47 @@
   <artifactId>mavenArchetype</artifactId>
   <packaging>war</packaging>
   <version>v1</version>
+
   <name>mavenArchetype Maven Webapp</name>
-  <url>http://maven.apache.org</url>
+  <url>https://maven.apache.org</url>
+
   <dependencies>
+    <!--  单元测试框架  -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- servlet api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+    <!-- mysql connector api  -->
+    <!-- 需要注意mysql的版本,不同的mysql-connector对mysql的兼容不同 -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>8.0.33</version>
+    </dependency>
   </dependencies>
+
   <build>
     <finalName>mavenArchetype</finalName>
   </build>
+    <!-- 替换成aliyun仓库镜像源 -->
+    <repositories>
+      <repository>
+        <id>aliyun-repos</id>
+        <url>https://maven.aliyun.com/repository/public</url>
+        <releases>
+          <enabled>true</enabled>
+        </releases>
+        <snapshots>
+          <enabled>false</enabled>
+        </snapshots>
+      </repository>
+    </repositories>
 </project>
