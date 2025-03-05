@@ -20,9 +20,8 @@ public class UserDAO {
         try{
             if (userInfo.getUsername() != null){
                 String sql = "select * from User where username=?";
-                PreparedStatement preparedStatement = null;
                 if (conn != null) {
-                    preparedStatement = conn.prepareStatement(sql);
+                    PreparedStatement preparedStatement = conn.prepareStatement(sql);
                     preparedStatement.setString(1,userInfo.getUsername());
                     ResultSet resultSet = preparedStatement.executeQuery();
                     if (resultSet.next()){
@@ -46,9 +45,9 @@ public class UserDAO {
         }
         try{
             String sql = "insert into User (UserName,Password,UserEmail) values(?,?,?)";
-            PreparedStatement preparedStatement = null;
+
             if (conn != null) {
-                preparedStatement = conn.prepareStatement(sql);
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
                 preparedStatement.setString(1, userInfo.getUsername());
                 preparedStatement.setString(2, userInfo.getPassword());
                 preparedStatement.setString(3,userInfo.getEmail());
