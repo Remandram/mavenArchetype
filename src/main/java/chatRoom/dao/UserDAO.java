@@ -1,7 +1,7 @@
 package chatRoom.dao;
-import chatRoom.pojo.UserInfo;
-import utils.JDBCUtils;
 
+import chatRoom.pojo.User;
+import utils.JDBCUtils;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,56 +14,63 @@ import java.sql.ResultSet;
 *  骚点的操作就构造干活,慢点的就构造完起手
 * */
 
-public class UserDAO {
-    public static UserInfo selectUser(UserInfo userInfo) {
+public class UserDAO{
+    /*
+    *
+    * */
+    public static User query(User user) {
         Connection conn = JDBCUtils.getConnection();
         try{
-            if (userInfo.getUsername() != null){
-                String sql = "select * from User where username=?";
+            if (user.getName() != null){
+                String sql = "select * from user where name=?";
                 if (conn != null) {
                     PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                    preparedStatement.setString(1,userInfo.getUsername());
+                    preparedStatement.setString(1, user.getName());
                     ResultSet resultSet = preparedStatement.executeQuery();
                     if (resultSet.next()){
-                        UserInfo user = new UserInfo();
-                        user.setUserid(resultSet.getString("userid"));
-                        user.setUsername(resultSet.getString("username"));
-                        user.setPassword(resultSet.getString("password"));
-                        user.setEmail(resultSet.getString("useremail"));
-                        return user;
-                    }else{return null;}
+                        User rev = new User();
+                        rev.setUid(resultSet.getString("uid"));
+                        rev.setName(resultSet.getString("name"));
+                        rev.setPassword(resultSet.getString("password"));
+                        rev.setMail(resultSet.getString("mail"));
+                        return rev;
+                    }
+                    return null;
                 }
             }
         }
         catch(Exception e){e.printStackTrace();}
         return null;
     }
-    public static int insertUser(UserInfo userInfo){
+
+    public static int insert(User User){
         Connection conn = JDBCUtils.getConnection();
-        if (selectUser(userInfo) != null){
+        if (query(User) != null){
             return 1;
         }
         try{
-            String sql = "insert into User (UserName,Password,UserEmail) values(?,?,?)";
+            String sql = "insert into user (name,password,mail) values(?,?,?)";
 
             if (conn != null) {
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                preparedStatement.setString(1, userInfo.getUsername());
-                preparedStatement.setString(2, userInfo.getPassword());
-                preparedStatement.setString(3,userInfo.getEmail());
+                preparedStatement.setString(1, User.getName());
+                preparedStatement.setString(2, User.getPassword());
+                preparedStatement.setString(3, User.getMail());
                 preparedStatement.execute();
-                if (selectUser(userInfo) != null){
+                if (query(User) != null){
                     return 0;
                 }
             }
         }catch (Exception e) {e.printStackTrace();}
         return -1;
     }
-    public static int updateUser(UserInfo userInfo){
+
+    public static int update(User User){
 
         return -1;
     }
-    public static int deleteUser(UserInfo userInfo){
+
+    public static int delete(User User){
         Connection conn = JDBCUtils.getConnection();
 
         return -1;

@@ -1,18 +1,15 @@
 package test;
 import utils.JDBCUtils;
-import chatRoom.pojo.UserInfo;
-
+import chatRoom.pojo.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-
-
 public class GenerateMysqlVirtualUserDataTest {
-    public static void createVirtualUserData(UserInfo userInfo) {
+    public static void createVirtualUserData(User User) {
         Connection conn = JDBCUtils.getConnection();
-        String UserName = userInfo.getUsername();
-        String UserPassword = userInfo.getPassword();
-        String UserEmail = userInfo.getEmail();
+        String UserName = User.getName();
+        String UserPassword = User.getPassword();
+        String UserEmail = User.getMail();
         String sql = "insert into User (username,password,useremail) values(?,?,?)";
         try{
             PreparedStatement preparedStatement = null;
@@ -27,11 +24,11 @@ public class GenerateMysqlVirtualUserDataTest {
     }
 
     public static void main(String[] args) {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setUsername("admin");
-        userInfo.setPassword("123456");
-        userInfo.setEmail("admin@qq.com");
-        createVirtualUserData(userInfo);
+        User User = new User();
+        User.setName("admin");
+        User.setPassword("123456");
+        User.setMail("admin@qq.com");
+        createVirtualUserData(User);
     }
 
 }

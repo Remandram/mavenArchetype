@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class MysqlConnectionTest {
     public static void main(String[] args) {
         Connection conn = JDBCUtils.getConnection();
-        String sql = "select * from User";
+        String sql = "select * from user";
         try{
             PreparedStatement preparedStatement = null;
             if (conn != null) {
@@ -20,11 +20,11 @@ public class MysqlConnectionTest {
             }
             if (resultSet != null) {
                 while (resultSet.next()) {
-                    String id = resultSet.getString("userid");
-                    String username = resultSet.getString("username");
+                    String id = resultSet.getString("id");
+                    String username = resultSet.getString("name");
                     String password = resultSet.getString("password");
-                    String useremail = resultSet.getString("useremail");
-                    System.out.println("userid:" + id + "\tusername:" + username + "\tpassword:" + password + "\tuseremail:" + useremail);
+                    String useremail = resultSet.getString("mail");
+                    System.out.println("id:" + id + "\t\tname:" + username + "\t\tpassword:" + password + "\t\tmail:" + useremail);
                 }
             }
 
