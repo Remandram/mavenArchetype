@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登陆注册</title>
+    <!-- 引入css 和图标图的css  引入才可以生效 -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container" style="">
+            <!-- 注册 -->
+            <form action="#" class="form-container1">
+                <h1>用户注册</h1>
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <input type="password-again" placeholder="确认密码">
+                <input type="email" placeholder="邮箱">
+                <button>注册</button>
+            </form>
+        </div>
+        <div  id="form1" class="form-container sing-in-container" style="">
+            <!-- 登陆 -->
+            <form action="#" class="form-container1">
+                <h1>用户登陆</h1>
+                <input type="text" placeholder="用户名">
+                <input type="password" placeholder="密码">
+                <a href="#">忘记密码?</a>
+                <button>登陆</button>
+            </form>
+        </div>
+        <!-- 侧边栏内容 -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-pannel overlay-left">
+                    <h1>已有账号?</h1>
+                    <p>点击进行登陆吧。</p>
+                    <button class="ghost" id="signIn">登陆</button>
+                </div>
+                <div class="overlay-pannel overlay-right">
+                    <h1>没有帐号？</h1>
+                    <p>快去注册一个属于你的账号吧。</p>
+                    <button class="ghost" id="signUp">注册</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./index.js"></script>
+</html>
